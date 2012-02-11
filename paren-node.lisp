@@ -5,6 +5,8 @@
    ;; Utils 
    #:create-dict
    #:concat
+   #:parse-json
+   #:stringify-json
 
    
    ;; Node.js
@@ -38,6 +40,12 @@
 
 (defmacro+ps concat (&rest rest)
   `(concatenate 'string ,@rest))
+
+(defmacro+ps parse-json (str)
+  `(chain -J-S-O-N (parse ,str)))
+
+(defmacro+ps stringify-json (obj)
+  `(chain -J-S-O-N (stringify ,obj)))
 
 
 ;; Node.js
