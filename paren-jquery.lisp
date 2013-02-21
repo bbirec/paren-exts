@@ -3,6 +3,7 @@
   (:use :cl :parenscript)
 
   (:export
+   #:ready
    #:$ajax
    #:reload-page
    #:with-elements
@@ -11,6 +12,8 @@
 
 (in-package :paren-jquery)
 
+(defpsmacro ready (&rest body)
+  `(chain ($ document) (ready (lambda () ,@body))))
 
 (defpsmacro $ajax (param done-func)
   `(chain $ (ajax ,param) (done ,done-func)))
