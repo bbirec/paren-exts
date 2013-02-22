@@ -3,6 +3,8 @@
   (:export
    #:gen-js))
 
+(in-package :paren-util)
+
 (defun absolute-path (system filename)
   (merge-pathnames filename (asdf:system-source-directory system)))
 
