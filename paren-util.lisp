@@ -14,7 +14,8 @@
   (with-open-file (s (absolute-path system filename) :direction :output
 		     :if-exists :supersede)
     (let ((out (loop for f in input-files collect
-		       (ps-compile-file (absolute-path system f)))))
+		       (ps-compile-file (absolute-path system f)
+					:external-format :UTF-8))))
       (write-string (apply #'concatenate 'string out) s))
     
     (format t "File written in ~A~%" filename)))
